@@ -1,0 +1,17 @@
+build --action_env PYTHON_BIN_PATH="/usr/bin/python3.10"
+build --action_env PYTHON_LIB_PATH="/usr/lib/python3.10/site-packages"
+build --python_path="/usr/bin/python3.10"
+build:opt --copt=-Wno-sign-compare
+build:opt --host_copt=-Wno-sign-compare
+build:opt --copt=-mno-avx2
+build:opt --host_copt=-mno-avx2
+build:opt --copt=-mno-avx
+build:opt --host_copt=-mno-avx
+build:opt --copt=-march=core2
+build:opt --host_copt=-march=core2
+test --flaky_test_attempts=3
+test --test_size_filters=small,medium
+test:v1 --test_tag_filters=-benchmark-test,-no_oss,-gpu,-oss_serial
+test:v1 --build_tag_filters=-benchmark-test,-no_oss,-gpu
+test:v2 --test_tag_filters=-benchmark-test,-no_oss,-gpu,-oss_serial,-v1only
+test:v2 --build_tag_filters=-benchmark-test,-no_oss,-gpu,-v1only
