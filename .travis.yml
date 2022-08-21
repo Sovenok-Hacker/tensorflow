@@ -1,0 +1,32 @@
+dist: bionic
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+      - deadsnakes
+    packages:
+      - wget
+      - pkg-config
+      - g++-11
+      - gcc-11
+      - binutils
+      - python3.10
+      - apt-transport-https
+      - curl
+      - gnupg
+
+before_install:
+  - curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor > bazel.gpg
+  - sudo mv bazel.gpg /etc/apt/trusted.gpg.d/
+  - echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+  - sudo apt update
+  - sudo apt install bazel
+  - sudo apt install python3.10-dev
+  - wget https://bootstrap.pypa.io/get-pip.py
+  - sudo python3.10 get-pip.py
+  - pip install -U --user pip numpy wheel packaging requests opt_einsum
+  - pip install -U --user keras_preprocessing --no-deps
+
+script:
+  - bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package --jobs 6
+  - ./bazel-bin/tensorflow/tools/pip_package/build_pip_package .
