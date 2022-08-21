@@ -22,8 +22,7 @@ before_install:
   - sudo apt update
   - sudo apt install bazel bazel-5.1.1
   - sudo apt install python3.10-dev
-  - wget https://bootstrap.pypa.io/get-pip.py
-  - sudo python3.10 get-pip.py
+  - curl https://bootstrap.pypa.io/get-pip.py | sudo python3.10
   - pip install -U --user pip numpy wheel packaging requests opt_einsum
   - pip install -U --user keras_preprocessing --no-deps
 
