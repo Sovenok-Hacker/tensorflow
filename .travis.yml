@@ -20,7 +20,7 @@ before_install:
   - sudo mv bazel.gpg /etc/apt/trusted.gpg.d/
   - echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
   - sudo apt update
-  - sudo apt install bazel
+  - sudo apt install bazel-5.1.1
   - sudo apt install python3.10-dev
   - wget https://bootstrap.pypa.io/get-pip.py
   - sudo python3.10 get-pip.py
