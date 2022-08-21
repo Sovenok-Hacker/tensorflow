@@ -27,5 +27,5 @@ before_install:
   - pip install -U --user keras_preprocessing --no-deps
 
 script:
-  - bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package --jobs 6
+  - bazel build --config=opt //tensorflow/tools/pip_package:build_pip_package --jobs 12
   - ./bazel-bin/tensorflow/tools/pip_package/build_pip_package .
