@@ -1,5 +1,5 @@
 build --action_env PYTHON_BIN_PATH="/usr/bin/python3.10"
-build --action_env PYTHON_LIB_PATH="/usr/lib/python3.10/site-packages"
+build --action_env PYTHON_LIB_PATH="/usr/local/lib/python3.10/dist-packages"
 build --python_path="/usr/bin/python3.10"
 build:opt --copt=-Wno-sign-compare
 build:opt --host_copt=-Wno-sign-compare
